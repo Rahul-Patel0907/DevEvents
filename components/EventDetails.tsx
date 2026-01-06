@@ -2,9 +2,9 @@ import React from 'react'
 import Image from 'next/image';
 import BookEvent from './BookEvent';
 import { getSimilarEventBySLug } from '@/lib/actions/event.actions';
+import { getBookingsCount } from '@/lib/actions/booking.actions';
 import { IEvent } from '@/database';
 import EventCard from './EventCard';
-const bookings = 1;
 
 const EventDetailItem = ({ icon, alt, label }: { icon: string, alt: string, label: string }) => {
     return (
@@ -40,6 +40,7 @@ const EventDetails = async ({ event }: { event: any }) => {
     if (!description) return null;
 
     const similarEvents: IEvent[] = await getSimilarEventBySLug(event.slug);
+    const bookings = await getBookingsCount(event._id);
 
 
     return (
@@ -79,7 +80,7 @@ const EventDetails = async ({ event }: { event: any }) => {
                         ) : (
                             <p className='text-sm'>Be the first to book your spot!</p>
                         )}
-                        <BookEvent />
+                        <BookEvent eventId={event._id} />
                     </div>
                 </aside>
 
