@@ -1,10 +1,20 @@
 import React from 'react'
 import ExploreBtn from '@/components/ExploreBtn'
 import EventCard from '@/components/EventCard'
-import events from '@/lib/constants'
+import { IEvent, Event as EventModel } from '@/database';
+import connectDB from '@/lib/mongodb';
+import { cache } from 'react';
+import { cacheLife } from 'next/cache';
 
+const page = async () => {
+  'use cache';
+  cacheLife('hours');
+  await connectDB();
+  const eventsData = await EventModel.find().sort({ createdAt: -1 });
 
-const page = () => {
+  // Serialize to plain objects to ensure compatibility
+  const events: IEvent[] = JSON.parse(JSON.stringify(eventsData));
+
   return (
     <section>
       <h1 className='text-center'>The Hub for Every Dev <br /> Event You Can&apos;t Miss!</h1>
@@ -15,9 +25,9 @@ const page = () => {
         <h3>Featured Events</h3>
 
         <ul className='events'>
-          {events.map((event)=> (
-            <li key={event.title}>
-              <EventCard {...event}/>
+          {events && events.length > 0 && events.map((event: IEvent) => (
+            <li key={event.title} className='list-none'>
+              <EventCard {...event} />
             </li>
           ))}
         </ul>
