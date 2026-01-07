@@ -13,7 +13,7 @@ const Navbar = () => {
     <header>
       <nav>
         <Link href='/' className='logo'>
-          <Image src="/icons/logo.png" alt="logo" width={24} height={24} />
+          <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
 
           <p>DevSync</p>
         </Link>

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "DevSync",
   description: "The Hub for Dev Events you mustn't miss!",
   icons: {
-    icon: '/icons/logo.png',
+    icon: '/icons/logo.svg',
   }
 };
 
