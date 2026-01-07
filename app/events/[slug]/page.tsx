@@ -14,7 +14,7 @@ const EventDetailsPage = async ({ params }: { params: Promise<{ slug: string }> 
 
   return (
     <section id='event'>
-      <h1>Event Details Page for {slug}</h1>
+      <h1>{event.title}</h1>
       <EventDetails event={event} />
     </section>
   )

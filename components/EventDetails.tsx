@@ -46,8 +46,8 @@ const EventDetails = async ({ event }: { event: any }) => {
     return (
         <section id='event'>
             <div className='header'>
-                <h1>Event Description</h1>
-                <p className='mt-2'>{description}</p>
+                <h1 className='mt-4 text-xl font-semibold'>Event Description:</h1>
+                <p >{description}</p>
             </div>
             <div className='details'>
                 <div className='content'>
