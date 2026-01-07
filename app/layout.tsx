@@ -18,6 +18,9 @@ const martianMono = Martian_Mono({
 export const metadata: Metadata = {
   title: "DevSync",
   description: "The Hub for Dev Events you mustn't miss!",
+  icons: {
+    icon: '/icons/logo.png',
+  }
 };
 
 export default function RootLayout({
